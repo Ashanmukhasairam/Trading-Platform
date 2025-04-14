@@ -16,9 +16,11 @@ const Login = () => {
 
     try {
       // Make sure the URL is correct and accessible
-      const response = await axios.post("http://localhost:8000/login", {
+      const response = await axios.post("https://trading-platform-yle5.onrender.com/login", {
         email,
         password,
+      }, {
+        withCredentials: true,
       });
 
       console.log("Backend Response:", response); // Debug log for backend response
@@ -28,7 +30,7 @@ const Login = () => {
         localStorage.setItem("token", response.data.token);
         console.log("Login successful, redirecting...");
         // Redirect to dashboard
-        window.location.href = "http://localhost:3000"; // ✅ this works
+        window.location.href = "https://main.d1fdn9xues2nmm.amplifyapp.com/holdings"; // ✅ this works
         // This is the route to your dashboard
       }
     } catch (error) {
