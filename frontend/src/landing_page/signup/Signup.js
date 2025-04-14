@@ -20,7 +20,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/signup', form, {
+      const response = await axios.post('https://trading-platform-yle5.onrender.com/signup', form, {
         withCredentials: true,
       });
       console.log("Signup success:", response.data);

@@ -10,7 +10,7 @@ const BuyActionWindow = ({ uid }) => {
   const [stockPrice, setStockPrice] = useState(0.0);
 
   const handleBuyClick = () => {
-    axios.post("http://localhost:8000/newOrder", {
+    axios.post("https://trading-platform-yle5.onrender.com/newOrder", {
       name: uid,
       qty: Number(stockQuantity),
       price: Number(stockPrice),
@@ -21,7 +21,7 @@ const BuyActionWindow = ({ uid }) => {
   };
 
   const handleSellClick = () => {
-    axios.post("http://localhost:8000/newOrder", {
+    axios.post("https://trading-platform-yle5.onrender.com/newOrder", {
       name: uid,
       qty: Number(stockQuantity),
       price: Number(stockPrice),
