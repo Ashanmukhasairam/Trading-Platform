@@ -1,0 +1,14 @@
+# Ignore .env files in all subfolders
+/backend/.env
+/frontend/.env
+/dashboard/.env
+/Assests
+
+# Ignore node_modules in all subfolders
+/backend/node_modules/
+/frontend/node_modules/
+/dashboard/node_modules/
+
+dist/
+build/
+*.log
