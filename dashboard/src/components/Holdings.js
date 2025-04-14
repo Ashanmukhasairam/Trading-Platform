@@ -8,7 +8,7 @@ const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/allHoldings", { withCredentials: true }).then((res) => {
+    axios.get("https://trading-platform-yle5.onrender.com/allHoldings", { withCredentials: true }).then((res) => {
       // console.log(res.data);
       setAllHoldings(res.data);
     });
