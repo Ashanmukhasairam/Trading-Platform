@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
   app.use(
     cors({
-      origin: ["https://main.d1fdn9xues2nmm.amplifyapp.com/","https://main.d9t170ery93g0.amplifyapp.com/"],
+      origin: ["https://main.d1fdn9xues2nmm.amplifyapp.com","https://main.d9t170ery93g0.amplifyapp.com"],
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true,
     })
