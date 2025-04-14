@@ -9,28 +9,38 @@ const BuyActionWindow = ({ uid }) => {
   const [stockQuantity, setStockQuantity] = useState(1);
   const [stockPrice, setStockPrice] = useState(0.0);
 
-  const handleBuyClick = () => {
-    axios.post("https://trading-platform-yle5.onrender.com/newOrder", {
-      name: uid,
-      qty: Number(stockQuantity),
-      price: Number(stockPrice),
-      mode: "BUY",
-    });
-
-    GeneralContext.closeBuyWindow();
+  const handleBuyClick = async () => {
+    try {
+      const response = await axios.post("https://trading-platform-yle5.onrender.com/newOrder", {
+        name: uid,
+        qty: Number(stockQuantity),
+        price: Number(stockPrice),
+        mode: "BUY",
+      });
+  
+      console.log("Buy Order Response:", response.data);
+      GeneralContext.closeBuyWindow();
+    } catch (error) {
+      console.error("Buy Order Error:", error.response?.data || error.message);
+    }
   };
-
-  const handleSellClick = () => {
-    axios.post("https://trading-platform-yle5.onrender.com/newOrder", {
-      name: uid,
-      qty: Number(stockQuantity),
-      price: Number(stockPrice),
-      mode: "SELL",
-    });
-
-    GeneralContext.closeBuyWindow();
+  
+  const handleSellClick = async () => {
+    try {
+      const response = await axios.post("https://trading-platform-yle5.onrender.com/newOrder", {
+        name: uid,
+        qty: Number(stockQuantity),
+        price: Number(stockPrice),
+        mode: "SELL",
+      });
+  
+      console.log("Sell Order Response:", response.data);
+      GeneralContext.closeBuyWindow();
+    } catch (error) {
+      console.error("Sell Order Error:", error.response?.data || error.message);
+    }
   };
-
+  
   const handleCancelClick = () => {
     GeneralContext.closeBuyWindow();
   };
