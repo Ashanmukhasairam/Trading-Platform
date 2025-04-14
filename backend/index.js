@@ -5,13 +5,25 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-  app.use(
-    cors({
-      origin: ["https://main.d1fdn9xues2nmm.amplifyapp.com","https://main.d9t170ery93g0.amplifyapp.com"],
-      methods: ["GET", "POST", "PUT", "DELETE"],
-      credentials: true,
-    })
-  );
+const allowedOrigins = [
+  "https://main.d1fdn9xues2nmm.amplifyapp.com",
+  "https://main.d9t170ery93g0.amplifyapp.com"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
+
 
 const { HoldingsModel } = require("./model/HoldingsModel");
 const { PositionsModel } = require("./model/PositionsModel");
