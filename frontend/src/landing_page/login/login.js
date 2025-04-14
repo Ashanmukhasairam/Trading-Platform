@@ -28,7 +28,7 @@ const Login = () => {
         localStorage.setItem("token", response.data.token);
         console.log("Login successful, redirecting...");
         // Redirect to dashboard
-        window.location.href = "http://localhost:3001"; // ✅ this works
+        window.location.href = "http://localhost:3000"; // ✅ this works
         // This is the route to your dashboard
       }
     } catch (error) {
