@@ -30,7 +30,7 @@ const Login = () => {
         localStorage.setItem("token", response.data.token);
         console.log("Login successful, redirecting...");
         // Redirect to dashboard
-        window.location.href = "https://main.d1fdn9xues2nmm.amplifyapp.com/holdings"; // ✅ this works
+        window.location.href = "https://main.d1fdn9xues2nmm.amplifyapp.com"; // ✅ this works
         // This is the route to your dashboard
       }
     } catch (error) {
