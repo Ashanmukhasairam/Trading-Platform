@@ -20,17 +20,21 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://trading-platform-yle5.onrender.com/signup', form, {
-        withCredentials: true,
-      });
+      const response = await axios.post(
+        'https://trading-platform-yle5.onrender.com/signup',
+        form,
+        { withCredentials: true }
+      );
       console.log("Signup success:", response.data);
-      onClose();
+      navigate("/login", {
+        state: { successMessage: "Signup successful! Please login." }
+      });
     } catch (err) {
       console.error("Signup error:", err.response?.data || err.message);
       alert("Signup failed. Please try again.");
     }
   };
-
+  
   return (
     <div className="signup-modal">
       <div className="signup-content">
