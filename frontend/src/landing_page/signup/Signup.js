@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Signup.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // ✅ Needed for navigation
 
 const Signup = () => {
   const [form, setForm] = useState({
@@ -9,9 +10,7 @@ const Signup = () => {
     password: '',
   });
 
-  const onClose = () => {
-    window.location.href = "/";
-  };
+  const navigate = useNavigate(); // ✅ Initialize useNavigate
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -25,8 +24,11 @@ const Signup = () => {
         form,
         { withCredentials: true }
       );
+
       console.log("Signup success:", response.data);
-      navigate("/login", {
+
+      // ✅ Redirect to login with flash message
+      navigate("/", {
         state: { successMessage: "Signup successful! Please login." }
       });
     } catch (err) {
@@ -34,11 +36,15 @@ const Signup = () => {
       alert("Signup failed. Please try again.");
     }
   };
-  
+
+  const handleClose = () => {
+    navigate("/"); // ✅ Use navigate instead of window.location.href
+  };
+
   return (
     <div className="signup-modal">
       <div className="signup-content">
-        <span className="close-btn" onClick={onClose}>&times;</span>
+        <span className="close-btn" onClick={handleClose}>&times;</span>
         <h2>Create Account</h2>
         <form onSubmit={handleSubmit} className="signup-form">
           <input
